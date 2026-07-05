@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+
+    <link href="assets/img/icon.jpg" rel="icon">
+    <link rel="stylesheet" href="assets/css/Final.css">
+
+    
+</head>
+<body style="background-image: url('assets/img/Lbg2.jpg');">
+
+  <!-- Your Content Goes Here -->
+  <header class="header">
+    <div class="logo">
+        <img src="assets/img/icon.jpg" alt="FitLife Logo">
+    </div>
+    <div class="header-left">FitLife</div>
+    <ul class="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="About_us.html">About Us</a></li>
+        <li><a href="Login.html">Login</a></li>
+    </ul>
+</header>
+
+<div class="background"></div> <!-- Background image with blur -->
+
+<div class="auth-container">
+  <div class="login-box">
+      <h2>User Registration</h2>
+      <form action="Register.php" method="POST">
+          <input type="text" name="name" placeholder="Enter your name" required>
+          <span class="error" id="nameError"></span>
+
+          <input type="email" name="email" placeholder="Enter your email" required>
+          <span class="error" id="emailError"></span>
+
+          <input type="password" name="password" placeholder="Enter your password" required>
+          <span class="error" id="passwordError"></span>
+
+          <input type="number" name="age" placeholder="Enter your age" required>
+          <span class="error" id="ageError"></span>
+
+          <input type="number" name="height" placeholder="Enter your height" required>
+          <span class="error" id="heightError"></span>
+
+          <input type="number" name="weight" placeholder="Enter your weight" required>
+          <span class="error" id="weightError"></span>
+
+          <input type="submit" value="Register"><br>
+          <span class="error-general" id="generalError"></span>
+      </form>
+      <br>
+      <h3 style="font-family:'Times New Roman', Times, serif;">Already have an account?</h3><br>
+      <a href="Login.html">Login</a>
+  </div>
+</div>
+
+  <script>
+      // Retrieve errors from session storage and display them
+      document.addEventListener("DOMContentLoaded", function () {
+          let errors = JSON.parse(sessionStorage.getItem("register_errors")) || {};
+          
+          if (errors.name) document.getElementById("nameError").textContent = errors.name;
+          if (errors.email) document.getElementById("emailError").textContent = errors.email;
+          if (errors.password) document.getElementById("passwordError").textContent = errors.password;
+          if (errors.age) document.getElementById("ageError").textContent = errors.age;
+          if (errors.height) document.getElementById("heightError").textContent = errors.height;
+          if (errors.weight) document.getElementById("weightError").textContent = errors.weight;
+          if (errors.general) document.getElementById("generalError").textContent = errors.general;
+
+          // Clear errors after displaying them
+          sessionStorage.removeItem("register_errors");
+      });
+  </script>
+
+</body>
+</html>

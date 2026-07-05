@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Mail</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/icon.jpg" rel="icon">
+    <!--<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+    <link rel="stylesheet" href="assets/css/Final.css">
+
+    <style>
+        /* Input fields */
+        .login-box textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            color: black;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('assets/img/Lbg2.jpg');">
+    <!-- Your Content Goes Here -->
+<header class="header">
+    <div class="logo">
+        <img src="assets/img/icon.jpg" alt="FitLife Logo">
+    </div>
+    <div class="header-left">FitLife</div>
+    <ul class="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="About_us.html">About Us</a></li>
+    </ul>
+  </header>
+
+  <div class="auth-container">
+    <form action="Mail.php" method="POST">
+        <div class="login-box">
+        
+        Enter your email address: <input type="email" id="email" name="email" required><br>
+        Enter subject: <input type="text" id="subject" name="subject" required><br>
+        Enter your query/message: <br><textarea rows="10" cols="40" id="msg" name="msg" required></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+</div>
+</body>
+</html>

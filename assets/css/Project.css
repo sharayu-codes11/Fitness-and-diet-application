@@ -1,0 +1,127 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+
+        /* Glassmorphism rectangle box */
+        .login-box {
+            width: 300px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(10px); /* Glass effect */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /*input box*/
+        .input-box
+        {
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            margin-bottom:15px;
+        }
+
+        /* Input fields */
+        .login-box input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            color: black;
+        }
+
+        /* Placeholder text color */
+        .login-box input::placeholder {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        /* Submit button */
+        .login-box input[type="submit"] {
+            background: rgba(0, 123, 255, 0.8);
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+        }
+
+        .login-box input[type="submit"]:hover {
+            background: rgba(0, 86, 179, 0.9);
+        }
+
+        /* Link */
+        .login-box a {
+            text-decoration: none;
+            color: rgb(121, 174, 255);
+            font-size: 20px;
+        }
+
+        .login-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header Section */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.149);
+}
+
+.header-left {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #FFD700;
+}
+
+
+        /* error message */
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block; /* Initially hidden */
+        }

@@ -1,0 +1,149 @@
+database
+
+mysql> use fitnessdb;
+Database changed
+
+mysql> create table admin (admin_id int primary key NOT NULL, admin_name varchar(50), admin_email varchar(50), admin_password varchar(20));
+Query OK, 0 rows affected (0.59 sec)
+
+
+mysql> create table user (user_id int primary key NOT NULL, user_name varchar(50), user_email varchar(50), user_password varchar(20), user_age int, user_height float, user_weight float, admin_id int references admin(admin_id));
+Query OK, 0 rows affected (0.76 sec)
+
+
+mysql> create table workout(w_id int primary key NOT NULL, w_name varchar(50), w_type varchar(50), w_duration int, user_id int references user(user_id));
+Query OK, 0 rows affected (0.43 sec)
+
+mysql> create table diet_plan(d_id int primary key NOT NULL, plan_name varchar(50), recommended_for varchar(50), user_id int references user(user_id));
+Query OK, 0 rows affected (0.49 sec)
+
+mysql> create table progress(pr_id int primary key NOT NULL, date_recorded date, bmi float, u_weight float, user_id int references user(user_id));
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_fitnessdb |
++---------------------+
+| admin               |
+| diet_plan           |
+| progress            |
+| user                |
+| workout             |
++---------------------+
+5 rows in set (0.22 sec)
+
+mysql> create table progress_tracking(pr_id int primary key NOT NULL, date_recorded date, bmi float, u_weight float, user_id int references user(user_id));
+Query OK, 0 rows affected (0.44 sec)
+
+mysql> drop progress;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'progress' at line 1
+mysql> drop table progress;
+Query OK, 0 rows affected (0.43 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_fitnessdb |
++---------------------+
+| admin               |
+| diet_plan           |
+| progress_tracking   |
+| user                |
+| workout             |
++---------------------+
+5 rows in set (0.01 sec)
+
+mysql> select * from user;
++---------+--------------+-------------------------+----------------------+----------+-------------+-------------+----------+
+| user_id | user_name    | user_email              | user_password        | user_age | user_height | user_weight | admin_id |
++---------+--------------+-------------------------+----------------------+----------+-------------+-------------+----------+
+|       1 | jenis        | jenis.dsouza2@gmail.com | 2cad4be38fce4ae0cfcf |     NULL |           5 |          48 |        0 |
+|       2 | userrr       | jenis.26@gmail.com      | j12345               |       21 |           5 |          50 |        0 |
+|       3 | maggie smith | maggie.1smith@gmail.com | maggie1              |       52 |           6 |          60 |        0 |
++---------+--------------+-------------------------+----------------------+----------+-------------+-------------+----------+
+3 rows in set (0.08 sec)
+
+
+
+
+
+
+
+
+
+after changes
+
+mysql> show tables;
++---------------------+
+| Tables_in_fitnessdb |
++---------------------+
+| admin1              |
+| diet_plan           |
+| progress_tracking   |
+| user                |
+| workout             |
++---------------------+
+5 rows in set (0.03 sec)
+
+mysql> describe admin1;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| admin_id       | int(11)     | NO   | PRI | NULL    |       |
+| admin_name     | varchar(50) | YES  |     | NULL    |       |
+| admin_email    | varchar(50) | YES  |     | NULL    |       |
+| admin_password | varchar(20) | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+4 rows in set (0.08 sec)
+
+mysql> describe user;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| user_id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| user_name     | varchar(50) | YES  |     | NULL    |                |
+| user_email    | varchar(50) | YES  |     | NULL    |                |
+| user_password | varchar(20) | YES  |     | NULL    |                |
+| user_age      | int(11)     | YES  |     | NULL    |                |
+| user_height   | float       | YES  |     | NULL    |                |
+| user_weight   | float       | YES  |     | NULL    |                |
+| admin_id      | int(11)     | YES  | MUL | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+8 rows in set (0.01 sec)
+
+mysql> describe progress_tracking;
++---------------+---------+------+-----+---------+-------+
+| Field         | Type    | Null | Key | Default | Extra |
++---------------+---------+------+-----+---------+-------+
+| pr_id         | int(11) | NO   | PRI | NULL    |       |
+| date_recorded | date    | YES  |     | NULL    |       |
+| bmi           | float   | YES  |     | NULL    |       |
+| u_weight      | float   | YES  |     | NULL    |       |
+| user_id       | int(11) | YES  | MUL | NULL    |       |
+| admin_id      | int(11) | YES  | MUL | NULL    |       |
++---------------+---------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> describe diet_plan;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| d_id            | int(11)     | NO   | PRI | NULL    |       |
+| plan_name       | varchar(50) | YES  |     | NULL    |       |
+| recommended_for | varchar(50) | YES  |     | NULL    |       |
+| user_id         | int(11)     | YES  | MUL | NULL    |       |
+| admin_id        | int(11)     | YES  | MUL | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> describe workout;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| w_id       | int(11)     | NO   | PRI | NULL    |       |
+| w_name     | varchar(50) | YES  |     | NULL    |       |
+| w_type     | varchar(50) | YES  |     | NULL    |       |
+| w_duration | int(11)     | YES  |     | NULL    |       |
+| user_id    | int(11)     | YES  | MUL | NULL    |       |
+| admin_id   | int(11)     | YES  | MUL | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
